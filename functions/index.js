@@ -1,9 +1,11 @@
 'use strict';
+import imdbApi from imdbApi.js;
 
 var firebase = require("firebase");
 const functions = require('firebase-functions');
 const {WebhookClient} = require('dialogflow-fulfillment');
 const {Card, Suggestion} = require('dialogflow-fulfillment');
+var express = require('express')
  
 process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
  
@@ -22,11 +24,19 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   }
 
   function getEplTopRank(agent) {
-    return getTopTeam().then((output) => {
-      agent.add('Top ranking team is');
-      agent.add(output);
-    });
+      agent.add('Top ranking team is liverpool');
+      agent.add(imdbApi.getMovieDetails);
+    // return getTopTeam().then((output) => {
+    //   agent.add('Top ranking team is liverpool');
+    //   //agent.add(output);
+    //   return null;
+    // }, err=>
+    // {
+    //   throw err;
+    // });
 }
+
+
 
  // Run the proper function handler based on the matched Dialogflow intent name
  let intentMap = new Map();
@@ -49,3 +59,4 @@ class Team {
   eplTeam.push(new Team('Liverpool', 1, 39));
   eplTeam.push(new Team('Manchester City', 2, 37));
   eplTeam.push(new Team('Manchester United', 3, 30));
+
