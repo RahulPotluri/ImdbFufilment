@@ -1,5 +1,4 @@
 'use strict';
-import imdbApi from imdbApi.js;
 
 var firebase = require("firebase");
 const functions = require('firebase-functions');
