@@ -1,10 +1,8 @@
 'use strict';
 
-var firebase = require("firebase");
 const functions = require('firebase-functions');
 const {WebhookClient} = require('dialogflow-fulfillment');
-const {Card, Suggestion} = require('dialogflow-fulfillment');
-var express = require('express')
+var imdbApi = require('./ImdbApi/imdbApi');
  
 process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
  
@@ -12,7 +10,10 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   const agent = new WebhookClient({ request, response });
   console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
   console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
- 
+  
+  let movieNameToSearch = request.body.queryResult.parameters['movieName'];
+  //console.log('movie name is ' + movieNameToSearch);
+
   function welcome(agent) {
     agent.add(`Welcome to my agent!`);
   }
@@ -22,40 +23,30 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     agent.add(`I'm sorry, can you try again?`);
   }
 
-  function getEplTopRank(agent) {
-      agent.add('Top ranking team is liverpool');
-      agent.add(imdbApi.getMovieDetails);
-    // return getTopTeam().then((output) => {
-    //   agent.add('Top ranking team is liverpool');
-    //   //agent.add(output);
-    //   return null;
-    // }, err=>
-    // {
-    //   throw err;
-    // });
-}
+  function getDoesMovieExists(agent) {
+      if(imdbApi.DoesMovieExists(movieNameToSearch)) {
+        agent.setContext({'name': 'movie', 'lifespan': 100, 'parameters': {'movie': movieNameToSearch}});
+        agent.add(movieNameToSearch + 'it is a nice movie. Would you like to more about its cast, Release Date and plot?');
+      }
+      else {
+        agent.add('Movie doesnt exists ' + movieNameToSearch);
+      }
 
+  }
 
+  function getMovieReleaseYear(agent) {
+    return imdbApi.MovieReleaseYear;
+  }
 
  // Run the proper function handler based on the matched Dialogflow intent name
  let intentMap = new Map();
  intentMap.set('Default Welcome Intent', welcome);
  intentMap.set('Default Fallback Intent', fallback);
- intentMap.set('English premier league Lead', getEplTopRank);
+ intentMap.set('Movie Name', getDoesMovieExists);
+ intentMap.set('movieName_releaseYear', getMovieReleaseYear);
  agent.handleRequest(intentMap);
 
 });
 
-class Team {
-    constructor(name, rank, points) {
-      this.name = name;
-      this.rank = rank;
-      this.points = points;
-    } 
-  }
-  
-  var eplTeam = [];
-  eplTeam.push(new Team('Liverpool', 1, 39));
-  eplTeam.push(new Team('Manchester City', 2, 37));
-  eplTeam.push(new Team('Manchester United', 3, 30));
+
 

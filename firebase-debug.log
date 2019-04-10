@@ -1,0 +1,18 @@
+[debug] [2019-04-09T14:28:01.770Z] ----------------------------------------------------------------------
+[debug] [2019-04-09T14:28:01.772Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\s0p020q\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2019-04-09T14:28:01.773Z] CLI Version:   6.5.3
+[debug] [2019-04-09T14:28:01.773Z] Platform:      win32
+[debug] [2019-04-09T14:28:01.773Z] Node Version:  v6.9.2
+[debug] [2019-04-09T14:28:01.775Z] Time:          Tue Apr 09 2019 09:28:01 GMT-0500 (Central Daylight Time)
+[debug] [2019-04-09T14:28:01.775Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-04-09T14:28:01.797Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-04-09T14:28:01.798Z] > authorizing via signed-in user
+[debug] [2019-04-09T14:28:01.798Z] [iam] checking project dialogflow-236616 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2019-04-09T14:28:01.800Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-04-09T14:28:01.800Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-04-09T14:28:01.973Z] <<< HTTP RESPONSE 200
+[debug] [2019-04-09T14:28:01.983Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/dialogflow-236616:testIamPermissions  
+
+[debug] [2019-04-09T14:28:02.207Z] <<< HTTP RESPONSE 200
