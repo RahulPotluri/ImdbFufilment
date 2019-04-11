@@ -1,49 +1,24 @@
+/* eslint-disable promise/catch-or-return */
 const assert = require('assert');
 var sinon = require('sinon');
 var mocha = require('mocha');
+var chai = require('chai');
 var imdbApi = require('../ImdbApi/imdbApi');
 var it = mocha.it;
 var describe = mocha.describe;
-
-// describe('imdb response api', () => {
-    
-//     it('get response from body', () => {
-//           assert.equal('true', imdbApi.DoesMovieExists('speed'));
-//     })
-// });
-
+let expect = chai.expect;
 
 describe('imdb response api', () => {
 
     let response, apiStub;
 
-    before(() => {
-        response;
-        apiStub;
-    })
-
-    beforeEach(() => {
-
-        response = {
-            'Title' : 'Rocky',
-            'Year' : '1990'
-        };        
-    
-        apiStub = sinon.stub(imdbApi, 'MovieApi').returns(Promise.resolve(response)); 
-         
-    });
-
-    afterEach(() => {
-        apiStub.restore();
-    });
-
-   // const movieYear = 
-
-    it('should return expected response', () => {        
-
-        
-
-        assert.equal('true', imdbApi.DoesMovieExists('Any'));
+    it('should return expected response', (done) => {        
+        // eslint-disable-next-line promise/always-return
+        imdbApi.DoesMovieExists('speed').catch( result => {
+            expect(result).to.equal(false);            
+        // eslint-disable-next-line promise/always-return
+        } ).then( () => { 
+            done()});
     });
 
 

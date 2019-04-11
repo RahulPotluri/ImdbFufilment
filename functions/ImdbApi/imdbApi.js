@@ -1,3 +1,5 @@
+/* eslint-disable promise/catch-or-return */
+/* eslint-disable promise/always-return */
 const rq = require('request-promise');
 
 function getMovieDetailsApi(movieTitle) {
@@ -20,25 +22,34 @@ function getMovieDetailsApi(movieTitle) {
 }
 
 function getDoesMovieExists(movieTitle) {
-    var movieJson = getMovieDetailsApi(movieTitle).then( id => {
-        if(id.Title) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    });    
-    return movieJson;
+    return new Promise((resolve, reject) => {
+        var movieJson = getMovieDetailsApi(movieTitle);
+        movieJson.then(movie => {
+            if(movie.Title) {
+                resolve(true);
+            }
+            else {
+                resolve(false);
+            }
+        }).catch(err => {
+            console.log(err);
+            reject(err);
+        })
+    })
+    
 }
 
-function getMovieReleaseYear(movieTitle) {
-    return getMovieDetailsApi(movieTitle).then(id => {        
-        return id.Year;
-    });    
+function getMovieReleaseYear(movie) {
+    return new Promise((resolve, reject) => {
+        let movieApiCall = getMovieDetailsApi(movie);
+        movieApiCall.then(movieDetails => {
+            resolve(movieDetails.Year);
+        })
+    })
     
 }
 
 
 exports.DoesMovieExists = getDoesMovieExists;
 exports.MovieReleaseYear = getMovieReleaseYear;
-exports.MovieApi = getMovieDetailsApi;
+

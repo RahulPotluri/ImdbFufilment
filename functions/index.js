@@ -1,3 +1,4 @@
+/* eslint-disable promise/always-return */
 'use strict';
 
 const functions = require('firebase-functions');
@@ -35,15 +36,24 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   }
 
   function getMovieReleaseYear(agent) {
-    return imdbApi.MovieReleaseYear;
+    var movieName = agent.getContext('movie').parameters.movie;
+     var year = imdbApi.MovieReleaseYear(movieName);
+     // eslint-disable-next-line promise/catch-or-return
+     return year.then(movieYear => {
+       
+      agent.add('Release year ' + movieYear);
+      response.json({'fulfillmentText': 'Release year ' + movieYear});
+     });
+      
   }
-
+const {test2, test} = require('./intents/test')
  // Run the proper function handler based on the matched Dialogflow intent name
  let intentMap = new Map();
  intentMap.set('Default Welcome Intent', welcome);
  intentMap.set('Default Fallback Intent', fallback);
  intentMap.set('Movie Name', getDoesMovieExists);
  intentMap.set('movieName_releaseYear', getMovieReleaseYear);
+ intentMap.set('test', test);
  agent.handleRequest(intentMap);
 
 });
