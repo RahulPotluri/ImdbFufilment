@@ -12,9 +12,8 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
   console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
   
-  let movieNameToSearch = request.body.queryResult.parameters['movieName'];
-  //console.log('movie name is ' + movieNameToSearch);
-
+  // let movieNameToSearch = request.body.queryResult.parameters['movieName'];
+  
   function welcome(agent) {
     agent.add(`Welcome to my agent!`);
   }
@@ -24,37 +23,15 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     agent.add(`I'm sorry, can you try again?`);
   }
 
-  function getDoesMovieExists(agent) {
-      if(imdbApi.DoesMovieExists(movieNameToSearch)) {
-        agent.setContext({'name': 'movie', 'lifespan': 100, 'parameters': {'movie': movieNameToSearch}});
-        agent.add(movieNameToSearch + 'it is a nice movie. Would you like to more about its cast, Release Date and plot?');
-      }
-      else {
-        agent.add('Movie doesnt exists ' + movieNameToSearch);
-      }
-
-  }
-
-  function getMovieReleaseYear(agent) {
-    var movieName = agent.getContext('movie').parameters.movie;
-     var year = imdbApi.MovieReleaseYear(movieName);
-     // eslint-disable-next-line promise/catch-or-return
-     return year.then(movieYear => {
-       
-      agent.add('Release year ' + movieYear);
-      response.json({'fulfillmentText': 'Release year ' + movieYear});
-     });
-      
-  }
-const {test2, test} = require('./intents/test')
- // Run the proper function handler based on the matched Dialogflow intent name
+   // Run the proper function handler based on the matched Dialogflow intent name
  let intentMap = new Map();
  intentMap.set('Default Welcome Intent', welcome);
  intentMap.set('Default Fallback Intent', fallback);
- intentMap.set('Movie Name', getDoesMovieExists);
- intentMap.set('movieName_releaseYear', getMovieReleaseYear);
- intentMap.set('test', test);
- agent.handleRequest(intentMap);
+ intentMap.set('1_MovieName', require('./intents/getDoesMovieExists').getDoesMovieExists);
+ intentMap.set('1.1_movieName_releaseYear',  require('./intents/getMovieReleaseYear').getMovieReleaseYear);
+ intentMap.set('1.1_MovieName_MovieDetails-yes', require('./intents/getMovieDetailsCastActor').getMovieDetailsCastActor);
+ agent.handleRequest(intentMap); 
+
 
 });
 

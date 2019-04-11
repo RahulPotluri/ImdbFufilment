@@ -1,0 +1,47 @@
+[debug] [2019-04-11T18:20:43.227Z] ----------------------------------------------------------------------
+[debug] [2019-04-11T18:20:43.230Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\s0p020q\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2019-04-11T18:20:43.230Z] CLI Version:   6.5.3
+[debug] [2019-04-11T18:20:43.230Z] Platform:      win32
+[debug] [2019-04-11T18:20:43.230Z] Node Version:  v6.9.2
+[debug] [2019-04-11T18:20:43.236Z] Time:          Thu Apr 11 2019 13:20:43 GMT-0500 (Central Daylight Time)
+[debug] [2019-04-11T18:20:43.236Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-04-11T18:20:43.262Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-04-11T18:20:43.264Z] > authorizing via signed-in user
+[debug] [2019-04-11T18:20:43.264Z] [iam] checking project dialogflow-236616 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2019-04-11T18:20:43.267Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/dialogflow-236616:testIamPermissions  
+
+[debug] [2019-04-11T18:21:04.314Z] Error: connect ETIMEDOUT 216.58.194.74:443
+    at Object.exports._errnoException (util.js:1022:11)
+    at exports._exceptionWithHostPort (util.js:1045:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1087:14)
+[error] 
+[error] Error: Server Error. connect ETIMEDOUT 216.58.194.74:443
+[debug] [2019-04-11T18:21:21.206Z] ----------------------------------------------------------------------
+[debug] [2019-04-11T18:21:21.209Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\s0p020q\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2019-04-11T18:21:21.209Z] CLI Version:   6.5.3
+[debug] [2019-04-11T18:21:21.209Z] Platform:      win32
+[debug] [2019-04-11T18:21:21.209Z] Node Version:  v6.9.2
+[debug] [2019-04-11T18:21:21.212Z] Time:          Thu Apr 11 2019 13:21:21 GMT-0500 (Central Daylight Time)
+[debug] [2019-04-11T18:21:21.212Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-04-11T18:21:21.230Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-04-11T18:21:21.231Z] > authorizing via signed-in user
+[debug] [2019-04-11T18:21:21.231Z] [iam] checking project dialogflow-236616 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2019-04-11T18:21:21.234Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/dialogflow-236616:testIamPermissions  
+
+[debug] [2019-04-11T18:21:21.481Z] <<< HTTP RESPONSE 200
+[debug] [2019-04-11T18:22:30.716Z] ----------------------------------------------------------------------
+[debug] [2019-04-11T18:22:30.719Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\s0p020q\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2019-04-11T18:22:30.720Z] CLI Version:   6.5.3
+[debug] [2019-04-11T18:22:30.720Z] Platform:      win32
+[debug] [2019-04-11T18:22:30.720Z] Node Version:  v6.9.2
+[debug] [2019-04-11T18:22:30.722Z] Time:          Thu Apr 11 2019 13:22:30 GMT-0500 (Central Daylight Time)
+[debug] [2019-04-11T18:22:30.722Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-04-11T18:22:30.749Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-04-11T18:22:30.750Z] > authorizing via signed-in user
+[debug] [2019-04-11T18:22:30.750Z] [iam] checking project dialogflow-236616 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2019-04-11T18:22:30.753Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/dialogflow-236616:testIamPermissions  
+
+[debug] [2019-04-11T18:22:30.962Z] <<< HTTP RESPONSE 200
