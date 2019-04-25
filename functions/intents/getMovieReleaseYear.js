@@ -19,4 +19,4 @@ function getMovieReleaseYear(agent) {
     });
 }
 
-exports.getMovieReleaseYear = getMovieReleaseYear;
+module.exports = getMovieReleaseYear;
