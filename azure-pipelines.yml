@@ -20,7 +20,7 @@ steps:
     dockerVersion: '17.09.0-ce'
 
 - script: |
-    docker build -t $(dockerId).azurecr.io/$(imageName) .
+    docker build -t $(dockerId).azurecr.io/$(imageName):latest .
     docker login -u $(dockerId) -p $(pswd) $(dockerId).azurecr.io
     docker push $(dockerId).azurecr.io/$(imageName)
   env:
