@@ -11,7 +11,7 @@ pool:
 
 variables:
   dockerId: imdbFufillmentContainerRegistry # Replace with your Docker ID for Docker Hub or the admin user name for the Azure Container Registry
-  imageName: imdbFufillment_dockerImage  # Replace with the name of the image you want to publish
+  imageName: imdbfufillment_dockerimage  # Replace with the name of the image you want to publish
   dockerPassword: uifaenF62GzgSVPg9rp+k58pFkoXmlmy
 
 steps:
