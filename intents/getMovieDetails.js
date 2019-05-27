@@ -1,4 +1,5 @@
 /* eslint-disable promise/always-return */
+
 const imdbApi = require("../ImdbApi/imdbApi");
 
 function getMovieDetails(agent) {
