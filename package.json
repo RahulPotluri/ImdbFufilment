@@ -1,25 +1,21 @@
 {
-  "name": "functions",
-  "description": "Cloud Functions for Firebase",
+  "name": "ImdbFulfilment",
+  "description": "Api library",
   "scripts": {
-    "serve": "firebase serve --only functions",
-    "shell": "firebase functions:shell",
-    "start": "npm run shell",
-    "test": "nodemon index.js",
-    "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
+    "start": "node app.js",
+    "test": "nodemon app.js"
   },
   "dependencies": {
-    "firebase-admin": "~7.0.0",
-    "firebase-functions": "^2.2.0",
     "actions-on-google": "^2.6.0",
+    "body-parser": "^1.18.3",
+    "connect-redis": "^3.4.1",
     "dialogflow": "^0.6.0",
     "dialogflow-fulfillment": "^0.5.0",
+    "dotenv": "^8.0.0",
     "express": "^4.16.4",
-    "firebase": "^5.9.3",
+    "express-session": "^1.16.1",
     "request": "^2.88.0",
-    "request-promise": "^4.2.4",
-    "body-parser": "^1.18.3"
+    "request-promise": "^4.2.4"
   },
   "devDependencies": {
     "eslint": "^5.12.0",

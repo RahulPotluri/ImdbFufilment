@@ -19,8 +19,3 @@ const webhookProcessing = (req, res) => {
 };
 
 module.exports = webhookProcessing;
-
-
-// console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
-    // console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
-    // let movieNameToSearch = request.body.queryResult.parameters['movieName'];
