@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 var session = require('express-session');
-var RedisStore = require('connect-redis')(session);
 const app = express();
 const port = 3000;
 
@@ -20,17 +19,11 @@ app.use(session({
         return sessionIdString[4];
       }
     }
-  },
-  store: new RedisStore({
-    host: 'imdbRedisFulfilment.redis.cache.windows.net',
-    port: '6380',
-    pass: 'password=sTBltMdFtZNeuhsFtWzC1rNQiPpluXr3otNKU1gte5c='
-  }) 
-  
+  }
 }));
 
 app.get('/', (req, res) => {
-  res.status(200).end("app is running");
+  res.status(200).send("app is running");
 }); 
 
 app.listen(port, () => console.log(`Imdb app listening on port ${port}!`));

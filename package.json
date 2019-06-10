@@ -3,7 +3,7 @@
   "description": "Api library",
   "scripts": {
     "start": "node app.js",
-    "test": "nodemon app.js"
+    "test": "mocha test/unitTest/**/*.spec.js"
   },
   "dependencies": {
     "actions-on-google": "^2.6.0",
@@ -18,12 +18,14 @@
     "request-promise": "^4.2.4"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "eslint": "^5.12.0",
     "eslint-plugin-promise": "^4.0.1",
-    "nodemon": "^1.18.11",
     "jshint": "^2.10.2",
     "mocha": "^6.1.4",
-    "chai": "^4.2.0"
+    "nodemon": "^1.18.11",
+    "should": "^13.2.3",
+    "supertest": "^4.0.2"
   },
   "private": true
 }
