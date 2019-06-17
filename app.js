@@ -34,4 +34,3 @@ app.get('/webhook', (req,res) => {
   res.status(200).send("200 OK");
 });
 
-module.exports = app;
